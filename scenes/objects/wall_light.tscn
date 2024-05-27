@@ -10,6 +10,8 @@ size = Vector2(836, 160)
 polygon = PackedVector2Array(-223, 3, -223, 24.9026, -223, 57, -239, 46, -240, 12, -235, 8, -235, 2, -233, -1, -230, -3, -227, -3)
 
 [node name="WallLight" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-12, 6)

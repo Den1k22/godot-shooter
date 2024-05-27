@@ -8,6 +8,9 @@ var can_laser: bool = true
 var can_grenade: bool = true
 #var laser_markers = null
 
+@export var max_speed: int = 500
+var speed: int = max_speed
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#rotation = playersRotaion
@@ -18,7 +21,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * 500
+	velocity = direction * speed
 	
 	#if (not direction == Vector2.ZERO):
 		#playersRotaion = direction.angle()
