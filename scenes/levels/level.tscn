@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dan6sqr2lahql"]
+[gd_scene load_steps=20 format=3 uid="uid://dan6sqr2lahql"]
 
 [ext_resource type="Script" path="res://scenes/scripts/level.gd" id="1_duyx7"]
 [ext_resource type="Texture2D" uid="uid://bylymvwr8mfu7" path="res://graphics/ground/stones.png" id="2_8qyfc"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bs2fp8h2gw1wn" path="res://scenes/houses/house.tscn" id="11_vednj"]
 [ext_resource type="PackedScene" uid="uid://dwyax1rouxnir" path="res://scenes/objects/steam_vent.tscn" id="12_7ia48"]
 [ext_resource type="PackedScene" uid="uid://dsccmta6vnx1l" path="res://scenes/objects/light_fan_animation.tscn" id="13_u44nb"]
+[ext_resource type="PackedScene" uid="uid://b32sf3y3f6tvw" path="res://scenes/objects/drone.tscn" id="16_di8n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxris"]
 resource_name = "walls"
@@ -124,6 +125,9 @@ metadata/_edit_lock_ = true
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.729412, 0.537255, 0.796078, 1)
 energy = 0.75
+
+[node name="Drone" parent="." instance=ExtResource("16_di8n2")]
+position = Vector2(530, 780)
 
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
 [connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]

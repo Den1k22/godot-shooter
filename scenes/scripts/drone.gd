@@ -12,3 +12,6 @@ func _physics_process(_delta):
 	velocity = Vector2.RIGHT * 300
 
 	move_and_slide()
+	
+func hit():
+	print("drone hit")
