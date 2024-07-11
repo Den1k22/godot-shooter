@@ -11,13 +11,6 @@ var can_grenade: bool = true
 @export var max_speed: int = 500
 var speed: int = max_speed
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	#rotation = playersRotaion
-	
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -35,7 +28,8 @@ func _process(_delta):
 	
 	var player_look_direction = (get_global_mouse_position() - position).normalized()
 	
-	if (Input.is_action_pressed("primary action") and can_laser):
+	if (Input.is_action_pressed("primary action") and can_laser and Globals.laser_amount > 0):
+		Globals.laser_amount -= 1
 		$LaserTimer.start()
 		can_laser = false
 		
@@ -44,7 +38,8 @@ func _process(_delta):
 		laser.emit(selected_laser.global_position, player_look_direction)
 		$LaserParticles.emitting = true
 
-	if (Input.is_action_pressed("seconday action") and can_grenade):
+	if (Input.is_action_pressed("seconday action") and can_grenade and Globals.grenade_amount > 0):
+		Globals.grenade_amount -= 1
 		$GrenadeTimer.start()
 		can_grenade = false
 		
@@ -52,7 +47,6 @@ func _process(_delta):
 
 func _on_laser_timer_timeout():
 	can_laser = true
-
 
 func _on_grenade_timer_timeout():
 	can_grenade = true 
