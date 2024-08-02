@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgs8qcvpr6g6e"]
+[gd_scene load_steps=20 format=3 uid="uid://dgs8qcvpr6g6e"]
 
 [ext_resource type="PackedScene" uid="uid://dan6sqr2lahql" path="res://scenes/levels/level.tscn" id="1_2lm8n"]
 [ext_resource type="Script" path="res://scenes/scripts/outside.gd" id="2_aybl5"]
@@ -15,10 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bs2fp8h2gw1wn" path="res://scenes/houses/house.tscn" id="12_jkkh7"]
 [ext_resource type="PackedScene" uid="uid://dwyax1rouxnir" path="res://scenes/objects/steam_vent.tscn" id="13_edyof"]
 [ext_resource type="PackedScene" uid="uid://dsccmta6vnx1l" path="res://scenes/objects/light_fan_animation.tscn" id="14_hs7sj"]
-[ext_resource type="PackedScene" uid="uid://dh3irxniuommq" path="res://scenes/objects/crate.tscn" id="15_j44vc"]
-[ext_resource type="PackedScene" uid="uid://bddbcgaucgfcw" path="res://scenes/objects/toilet.tscn" id="16_mhesp"]
-[ext_resource type="PackedScene" uid="uid://bnsudbl6lcd4b" path="res://scenes/objects/item.tscn" id="18_0kxfi"]
-[ext_resource type="PackedScene" uid="uid://dilla202dr120" path="res://scenes/objects/spawner.tscn" id="19_mkpyk"]
+[ext_resource type="PackedScene" uid="uid://omd3vbv66tyf" path="res://scenes/objects/item_spawner.tscn" id="19_r4gd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxris"]
 resource_name = "walls"
@@ -57,6 +54,10 @@ sources/1 = SubResource("TileSetAtlasSource_c824c")
 [node name="Outside" instance=ExtResource("1_2lm8n")]
 script = ExtResource("2_aybl5")
 
+[node name="Ground_Soil#Gate" parent="." index="1" instance=ExtResource("2_iw38d")]
+z_index = 1
+position = Vector2(534, -903)
+
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
 texture = ExtResource("3_o5473")
@@ -71,61 +72,51 @@ layer_0/tile_data = PackedInt32Array(-196599, 65537, 1, -262135, 65537, 1, -1310
 layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(-65530, 0, 0, -65529, 65536, 0, -65528, 65536, 0, -65527, 131072, 1, 9, 0, 2, 65545, 0, 2, 131081, 0, 2, 196617, 0, 2, 262153, 0, 2, 327689, 131072, 2, 327688, 65536, 0, 327687, 65536, 0, 327686, 65536, 0, 327685, 65536, 0, 327684, 65536, 0, 327683, 65536, 0, 327682, 65536, 0, 327681, 65536, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ground" index="2"]
+[node name="SteamVent" parent="Ground" index="2" instance=ExtResource("13_edyof")]
+z_index = 1
+position = Vector2(-35, -523)
+
+[node name="SteamVent2" parent="Ground" index="3" instance=ExtResource("13_edyof")]
+z_index = 1
+position = Vector2(1172, -766)
+
+[node name="SteamVent3" parent="Ground" index="4" instance=ExtResource("13_edyof")]
+z_index = 1
+position = Vector2(1498, -339)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="5"]
 modulate = Color(0.717647, 0.87451, 0.694118, 0.921569)
 position = Vector2(-698, 976)
 texture = ExtResource("6_tbaqy")
 
-[node name="Moss1" type="Sprite2D" parent="Ground" index="3"]
+[node name="Moss1" type="Sprite2D" parent="Ground" index="6"]
 position = Vector2(2665, -35.9999)
 rotation = -3.91975
 texture = ExtResource("7_ftldw")
 
-[node name="Moss2" type="Sprite2D" parent="Ground" index="4"]
+[node name="Moss2" type="Sprite2D" parent="Ground" index="7"]
 position = Vector2(3545, 1724)
 texture = ExtResource("8_ao3an")
 
-[node name="Moss3" type="Sprite2D" parent="Ground" index="5"]
+[node name="Moss3" type="Sprite2D" parent="Ground" index="8"]
 position = Vector2(3526, -46)
 texture = ExtResource("9_eml7a")
 
-[node name="Moss4" type="Sprite2D" parent="Ground" index="6"]
+[node name="Moss4" type="Sprite2D" parent="Ground" index="9"]
 position = Vector2(3520, 719)
 rotation = 1.69482
 texture = ExtResource("10_exyh5")
 
-[node name="Moss5" type="Sprite2D" parent="Ground" index="7"]
+[node name="Moss5" type="Sprite2D" parent="Ground" index="10"]
 position = Vector2(3546, 1355)
 texture = ExtResource("11_v6udn")
 
-[node name="House" parent="Ground" index="8" instance=ExtResource("12_jkkh7")]
+[node name="House" parent="Ground" index="11" instance=ExtResource("12_jkkh7")]
 position = Vector2(-3085, 1169)
 
-[node name="SteamVent" parent="Ground" index="9" instance=ExtResource("13_edyof")]
-position = Vector2(-16, 479)
-
-[node name="LightFanAnimation" parent="Ground" index="10" instance=ExtResource("14_hs7sj")]
+[node name="LightFanAnimation" parent="Ground" index="12" instance=ExtResource("14_hs7sj")]
 position = Vector2(-2519, 1759)
 frame_progress = 0.334476
-
-[node name="Crate" parent="Ground" index="11" instance=ExtResource("15_j44vc")]
-position = Vector2(1784, 20)
-
-[node name="Toilet" parent="Ground" index="12" instance=ExtResource("16_mhesp")]
-position = Vector2(1711, 285)
-
-[node name="Spawner" parent="Ground" index="13" instance=ExtResource("19_mkpyk")]
-position = Vector2(1198, 208)
-
-[node name="Item" parent="Ground" index="14" instance=ExtResource("18_0kxfi")]
-position = Vector2(253, 67)
-
-[node name="Ground_Soil#Gate" parent="." index="1" instance=ExtResource("2_iw38d")]
-position = Vector2(534, -903)
-
-[node name="Player" parent="." index="3"]
-position = Vector2(586, 29)
-metadata/_edit_group_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="5"]
 color = Color(0.729412, 0.537255, 0.796078, 1)
@@ -136,4 +127,14 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Something here"
 
+[node name="Player" parent="." index="8"]
+z_index = 2
+position = Vector2(586, 29)
+metadata/_edit_group_ = true
+
+[node name="ItemContainer" parent="." index="9" instance=ExtResource("19_r4gd5")]
+position = Vector2(1313, 10)
+
 [connection signal="player_entered_gate" from="Ground_Soil#Gate" to="." method="_on_ground_soil_gate_player_entered_gate"]
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]

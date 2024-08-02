@@ -7,8 +7,14 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_duyx7")
 
+[node name="Decals" type="Node2D" parent="."]
+
 [node name="Ground" type="Node2D" parent="."]
 position = Vector2(20, 0)
+
+[node name="Infestation" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
