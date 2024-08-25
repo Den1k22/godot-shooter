@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgs8qcvpr6g6e"]
+[gd_scene load_steps=22 format=3 uid="uid://dgs8qcvpr6g6e"]
 
 [ext_resource type="PackedScene" uid="uid://dan6sqr2lahql" path="res://scenes/levels/level.tscn" id="1_2lm8n"]
 [ext_resource type="Script" path="res://scenes/scripts/outside.gd" id="2_aybl5"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bs2fp8h2gw1wn" path="res://scenes/houses/house.tscn" id="12_jkkh7"]
 [ext_resource type="PackedScene" uid="uid://dwyax1rouxnir" path="res://scenes/objects/steam_vent.tscn" id="13_edyof"]
 [ext_resource type="PackedScene" uid="uid://dsccmta6vnx1l" path="res://scenes/objects/light_fan_animation.tscn" id="14_hs7sj"]
+[ext_resource type="PackedScene" uid="uid://d0fow7t21d6cx" path="res://scenes/objects/scout.tscn" id="16_acte4"]
+[ext_resource type="PackedScene" uid="uid://dh3irxniuommq" path="res://scenes/objects/crate.tscn" id="17_nqu5h"]
 [ext_resource type="PackedScene" uid="uid://omd3vbv66tyf" path="res://scenes/objects/item_spawner.tscn" id="19_r4gd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxris"]
@@ -118,6 +120,21 @@ position = Vector2(-3085, 1169)
 position = Vector2(-2519, 1759)
 frame_progress = 0.334476
 
+[node name="ItemContainer" parent="Items" index="0" instance=ExtResource("19_r4gd5")]
+position = Vector2(1313, 10)
+
+[node name="Crate" parent="Items" index="1" instance=ExtResource("17_nqu5h")]
+position = Vector2(337, 772)
+rotation = -3.13579
+
+[node name="Crate2" parent="Items" index="2" instance=ExtResource("17_nqu5h")]
+position = Vector2(-96, 769)
+rotation = -3.13579
+
+[node name="Crate3" parent="Items" index="3" instance=ExtResource("17_nqu5h")]
+position = Vector2(-540, 520)
+rotation = -3.13579
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="5"]
 color = Color(0.729412, 0.537255, 0.796078, 1)
 energy = 0.75
@@ -127,13 +144,13 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Something here"
 
-[node name="Player" parent="." index="8"]
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("16_acte4")]
+position = Vector2(1743, 698)
+
+[node name="Player" parent="." index="9"]
 z_index = 2
 position = Vector2(586, 29)
 metadata/_edit_group_ = true
-
-[node name="ItemContainer" parent="." index="9" instance=ExtResource("19_r4gd5")]
-position = Vector2(1313, 10)
 
 [connection signal="player_entered_gate" from="Ground_Soil#Gate" to="." method="_on_ground_soil_gate_player_entered_gate"]
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]

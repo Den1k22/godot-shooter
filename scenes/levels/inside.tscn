@@ -291,7 +291,7 @@ metadata/_edit_lock_ = true
 position = Vector2(413.375, 2456.5)
 shape = SubResource("RectangleShape2D_plqs0")
 
-[node name="Player" parent="." index="7"]
+[node name="Player" parent="." index="8"]
 z_index = 2
 position = Vector2(396, 2179)
 metadata/_edit_group_ = true
@@ -300,7 +300,21 @@ metadata/_edit_group_ = true
 texture = ExtResource("6_w27ey")
 texture_scale = 1.5
 
-[node name="Lights" parent="." index="8"]
+[node name="CeilingHole1" type="Sprite2D" parent="." index="9"]
+position = Vector2(1689, -2049)
+texture = ExtResource("16_nuj2l")
+
+[node name="Blood" type="Sprite2D" parent="." index="10"]
+position = Vector2(1519, 1472)
+texture = ExtResource("17_iii0o")
+
+[node name="Brush056" type="Sprite2D" parent="." index="11"]
+modulate = Color(0.105882, 0.313726, 0.180392, 0.498039)
+position = Vector2(1408, -4395)
+rotation = 0.727422
+texture = ExtResource("18_7vrgd")
+
+[node name="Lights" parent="." index="12"]
 metadata/_edit_lock_ = true
 
 [node name="LightFanAnimation" parent="Lights" index="0" instance=ExtResource("5_48lod")]
@@ -329,19 +343,5 @@ position = Vector2(2449, -192)
 scale = Vector2(3.0852, 3.0852)
 texture = ExtResource("8_s87tj")
 metadata/_edit_lock_ = true
-
-[node name="CeilingHole1" type="Sprite2D" parent="." index="9"]
-position = Vector2(1689, -2049)
-texture = ExtResource("16_nuj2l")
-
-[node name="Blood" type="Sprite2D" parent="." index="10"]
-position = Vector2(1519, 1472)
-texture = ExtResource("17_iii0o")
-
-[node name="Brush056" type="Sprite2D" parent="." index="11"]
-modulate = Color(0.105882, 0.313726, 0.180392, 0.498039)
-position = Vector2(1408, -4395)
-rotation = 0.727422
-texture = ExtResource("18_7vrgd")
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]

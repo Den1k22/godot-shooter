@@ -1,5 +1,7 @@
 extends Node
 
+const MAX_HEALTH = 100
+
 signal stat_change
 
 var laser_amount = 20:
@@ -13,5 +15,7 @@ var grenade_amount = 10:
 
 var health = 60:
 	set(value):
-		health = value
+		health = min(value, MAX_HEALTH)
 		stat_change.emit()
+
+var player_pos: Vector2

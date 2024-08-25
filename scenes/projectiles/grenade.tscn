@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxgyht5qbtf0d"]
+[gd_scene load_steps=12 format=3 uid="uid://cxgyht5qbtf0d"]
 
 [ext_resource type="Script" path="res://scenes/scripts/grenade.gd" id="1_3a1vo"]
 [ext_resource type="Texture2D" uid="uid://chqam2qnqm7ra" path="res://graphics/projectiles/grenade.png" id="1_y10nn"]
@@ -131,6 +131,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplosionArea/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_kficx"]
 length = 0.001
@@ -166,6 +178,9 @@ _data = {
 "RESET": SubResource("Animation_kficx")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wp3t6"]
+radius = 101.02
+
 [node name="Grenade" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 15
@@ -198,3 +213,13 @@ color = Color(1, 0, 0, 1)
 energy = 0.0
 texture = ExtResource("4_vtiqq")
 texture_scale = 0.03
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_wp3t6")
+disabled = true
+
+[connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]

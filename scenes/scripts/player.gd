@@ -22,6 +22,7 @@ func _process(_delta):
 	#rotation = playersRotaion
 
 	move_and_slide()
+	Globals.player_pos = global_position
 	#position += direction * 400 * delta
 	
 	look_at(get_global_mouse_position())
@@ -49,4 +50,7 @@ func _on_laser_timer_timeout():
 	can_laser = true
 
 func _on_grenade_timer_timeout():
-	can_grenade = true 
+	can_grenade = true
+
+func hit():
+	Globals.health -= 10
