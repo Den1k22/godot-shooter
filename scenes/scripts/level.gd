@@ -12,6 +12,9 @@ func _ready():
 	for scout in get_tree().get_nodes_in_group("Scouts"):
 		scout.connect("laser", _on_scout_laser)
 
+	for bug in get_tree().get_nodes_in_group("Bugs"):
+		bug.connect("bite", _on_bug_bite)
+
 func _on_container_opened(pos, direction):
 	var item = item_scene.instantiate()
 	item.position = pos
@@ -30,6 +33,9 @@ func create_laser(pos, direction):
 	laser.direction = direction
 	laser.rotation = direction.angle()
 	$Projectiles.add_child(laser)
+
+func _on_bug_bite():
+	Globals.health -= 5
 
 func _on_player_grenade(pos, direction):
 	var grenade = grenade_scene.instantiate() as RigidBody2D

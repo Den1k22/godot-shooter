@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cg4hwi6dpwgec" path="res://scenes/objects/item_container.tscn" id="1_mc0x6"]
 [ext_resource type="Texture2D" uid="uid://2rryprwbkx6c" path="res://graphics/objects/Box.png" id="2_0k7t0"]
-[ext_resource type="Script" path="res://scenes/objects/item_spawner.gd" id="2_naj4i"]
+[ext_resource type="Script" path="res://scenes/scripts/item_spawner.gd" id="2_naj4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1gs6"]
 size = Vector2(352, 252)

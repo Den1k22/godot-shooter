@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnsudbl6lcd4b"]
 
 [ext_resource type="Texture2D" uid="uid://dwmakevauu0et" path="res://graphics/items/orb2.png" id="1_g2ihb"]
-[ext_resource type="Script" path="res://scenes/item.gd" id="1_povxx"]
+[ext_resource type="Script" path="res://scenes/scripts/item.gd" id="1_povxx"]
 [ext_resource type="Texture2D" uid="uid://bwent3oyjirdk" path="res://graphics/lights/textures/circle.png" id="2_crwig"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fi26m"]
