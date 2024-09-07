@@ -21,7 +21,7 @@ func _process(_delta):
 		velocity = direction * speed
 		move_and_slide()
 	#else:
-		#$AnimatedSprite2D.play("default")
+		#$AnimatedSprite2D.play("default")dd
 
 	#if can_attack && !can_attack_cooldown:
 		#$AnimatedSprite2D.play("attack")

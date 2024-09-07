@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgs8qcvpr6g6e"]
+[gd_scene load_steps=24 format=3 uid="uid://dgs8qcvpr6g6e"]
 
 [ext_resource type="PackedScene" uid="uid://dan6sqr2lahql" path="res://scenes/levels/level.tscn" id="1_2lm8n"]
 [ext_resource type="Script" path="res://scenes/scripts/outside.gd" id="2_aybl5"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dh3irxniuommq" path="res://scenes/objects/crate.tscn" id="17_nqu5h"]
 [ext_resource type="PackedScene" uid="uid://dhsbihm8b3p21" path="res://scenes/enemies/bug.tscn" id="19_ifjca"]
 [ext_resource type="PackedScene" uid="uid://omd3vbv66tyf" path="res://scenes/objects/item_spawner.tscn" id="19_r4gd5"]
+[ext_resource type="PackedScene" uid="uid://b32sf3y3f6tvw" path="res://scenes/enemies/drone.tscn" id="20_ql1ig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxris"]
 resource_name = "walls"
@@ -146,10 +147,13 @@ offset_bottom = 23.0
 text = "Something here"
 
 [node name="Scout" parent="Enemies" index="0" instance=ExtResource("16_acte4")]
-position = Vector2(1743, 698)
+position = Vector2(2727, 1218)
 
 [node name="Bug" parent="Enemies" index="1" instance=ExtResource("19_ifjca")]
-position = Vector2(1208, 466)
+position = Vector2(2765, 237)
+
+[node name="Drone" parent="Enemies" index="2" instance=ExtResource("20_ql1ig")]
+position = Vector2(1151, 368)
 
 [node name="Player" parent="." index="9"]
 z_index = 2
