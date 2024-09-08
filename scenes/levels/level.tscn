@@ -25,6 +25,7 @@ metadata/_edit_lock_ = true
 position = Vector2(518, 459)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
 
 [node name="Lights" type="Node2D" parent="."]
