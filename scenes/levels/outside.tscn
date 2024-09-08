@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgs8qcvpr6g6e"]
+[gd_scene load_steps=26 format=3 uid="uid://dgs8qcvpr6g6e"]
 
 [ext_resource type="PackedScene" uid="uid://dan6sqr2lahql" path="res://scenes/levels/level.tscn" id="1_2lm8n"]
 [ext_resource type="Script" path="res://scenes/scripts/outside.gd" id="2_aybl5"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dhsbihm8b3p21" path="res://scenes/enemies/bug.tscn" id="19_ifjca"]
 [ext_resource type="PackedScene" uid="uid://omd3vbv66tyf" path="res://scenes/objects/item_spawner.tscn" id="19_r4gd5"]
 [ext_resource type="PackedScene" uid="uid://b32sf3y3f6tvw" path="res://scenes/enemies/drone.tscn" id="20_ql1ig"]
+[ext_resource type="PackedScene" uid="uid://c8like5b774ld" path="res://scenes/enemies/car.tscn" id="21_lrhdk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxris"]
 resource_name = "walls"
@@ -54,6 +55,12 @@ texture_region_size = Vector2i(390, 390)
 tile_size = Vector2i(390, 390)
 sources/0 = SubResource("TileSetAtlasSource_jxris")
 sources/1 = SubResource("TileSetAtlasSource_c824c")
+
+[sub_resource type="Curve2D" id="Curve2D_i77o7"]
+_data = {
+"points": PackedVector2Array(-830.622, -552.251, 830.622, 552.251, 2847, 405, 273.881, -125.716, -273.881, 125.716, 2842, 1728, 305.31, -179.594, -305.31, 179.594, -150, 1718, 457.965, -197.553, -457.965, 197.553, -1546, 3596, 579.19, 264.901, -579.19, -264.901, -3856, 3570, 179.594, 556.741, -179.594, -556.741, -5691, 2324, -215.513, 534.292, 215.513, -534.292, -5729, 519, -660.008, 148.165, 660.008, -148.165, -4600, -723, -493.883, -211.023, 493.883, 211.023, -1658, -531, -543.272, -224.492, 543.272, 224.492, -1008, 278, -170.614, -273.881, 170.614, 273.881, 2847, 405)
+}
+point_count = 11
 
 [node name="Outside" instance=ExtResource("1_2lm8n")]
 script = ExtResource("2_aybl5")
@@ -123,18 +130,18 @@ position = Vector2(-2519, 1759)
 frame_progress = 0.334476
 
 [node name="ItemContainer" parent="Items" index="0" instance=ExtResource("19_r4gd5")]
-position = Vector2(1313, 10)
+position = Vector2(2296, -506)
 
 [node name="Crate" parent="Items" index="1" instance=ExtResource("17_nqu5h")]
-position = Vector2(337, 772)
-rotation = -3.13579
+position = Vector2(-266, 993)
+rotation = -4.74539
 
 [node name="Crate2" parent="Items" index="2" instance=ExtResource("17_nqu5h")]
-position = Vector2(-96, 769)
-rotation = -3.13579
+position = Vector2(-1049, 996)
+rotation = -1.57292
 
 [node name="Crate3" parent="Items" index="3" instance=ExtResource("17_nqu5h")]
-position = Vector2(-540, 520)
+position = Vector2(-666, 1341)
 rotation = -3.13579
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="5"]
@@ -147,18 +154,25 @@ offset_bottom = 23.0
 text = "Something here"
 
 [node name="Scout" parent="Enemies" index="0" instance=ExtResource("16_acte4")]
-position = Vector2(2727, 1218)
+position = Vector2(7318, 259)
 
 [node name="Bug" parent="Enemies" index="1" instance=ExtResource("19_ifjca")]
-position = Vector2(2765, 237)
+position = Vector2(1571, 1708)
 
 [node name="Drone" parent="Enemies" index="2" instance=ExtResource("20_ql1ig")]
-position = Vector2(1151, 368)
+position = Vector2(2966, 1891)
 
 [node name="Player" parent="." index="9"]
 z_index = 2
-position = Vector2(586, 29)
+position = Vector2(2058, 1421)
 metadata/_edit_group_ = true
+
+[node name="CarPath" type="Path2D" parent="." index="12"]
+curve = SubResource("Curve2D_i77o7")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("21_lrhdk")]
+position = Vector2(2847, 405)
+rotation = 0.586754
 
 [connection signal="player_entered_gate" from="Ground_Soil#Gate" to="." method="_on_ground_soil_gate_player_entered_gate"]
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
