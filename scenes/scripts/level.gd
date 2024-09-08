@@ -2,7 +2,7 @@ extends Node2D
 class_name LevelParent 
 
 var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
-var grenade_scene: PackedScene = preload("res://scenes/Projectiles/grenade.tscn")
+var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn")
 var item_scene: PackedScene = preload("res://scenes/objects/item.tscn")
 
 func _ready():
