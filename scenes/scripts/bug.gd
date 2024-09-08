@@ -10,24 +10,16 @@ var speed: int = 300
 signal bite()
 
 func _process(_delta):
-	#if is_moving:
-		#$AnimatedSprite2D.play("moving")
-
 	if player_nearby:
 		look_at(Globals.player_pos)
-		
+
 		# var direction = (Globals.player_pos - position).normalized()
 		var direction = position.direction_to(Globals.player_pos)
 		velocity = direction * speed
-		move_and_slide()
-	#else:
-		#$AnimatedSprite2D.play("default")dd
-
-	#if can_attack && !can_attack_cooldown:
-		#$AnimatedSprite2D.play("attack")
-		#bite.emit()
-		#can_attack_cooldown = true
-		#$BiteCooldown.start()
+	else:
+		velocity = Vector2()
+		
+	move_and_slide()
 
 func hit():
 	health -= 10
