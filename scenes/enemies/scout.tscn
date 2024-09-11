@@ -17,7 +17,7 @@ radius = 946.444
 
 [node name="Scout" type="CharacterBody2D" groups=["Characters", "Scouts"]]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 15
 script = ExtResource("1_uqxlh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

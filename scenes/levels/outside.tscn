@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dgs8qcvpr6g6e"]
+[gd_scene load_steps=28 format=4 uid="uid://dgs8qcvpr6g6e"]
 
 [ext_resource type="PackedScene" uid="uid://dan6sqr2lahql" path="res://scenes/levels/level.tscn" id="1_2lm8n"]
 [ext_resource type="Script" path="res://scenes/scripts/outside.gd" id="2_aybl5"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dhsbihm8b3p21" path="res://scenes/enemies/bug.tscn" id="19_ifjca"]
 [ext_resource type="PackedScene" uid="uid://omd3vbv66tyf" path="res://scenes/objects/item_spawner.tscn" id="19_r4gd5"]
 [ext_resource type="PackedScene" uid="uid://b32sf3y3f6tvw" path="res://scenes/enemies/drone.tscn" id="20_ql1ig"]
+[ext_resource type="PackedScene" uid="uid://edu586lxg7j3" path="res://scenes/enemies/hunter.tscn" id="21_55se3"]
 [ext_resource type="PackedScene" uid="uid://c8like5b774ld" path="res://scenes/enemies/car.tscn" id="21_lrhdk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxris"]
@@ -73,6 +74,11 @@ _data = {
 "points": PackedVector2Array(-830.622, -552.251, 830.622, 552.251, 2847, 405, 273.881, -125.716, -273.881, 125.716, 2842, 1728, 305.31, -179.594, -305.31, 179.594, -150, 1718, 457.965, -197.553, -457.965, 197.553, -1546, 3596, 579.19, 264.901, -579.19, -264.901, -3856, 3570, 179.594, 556.741, -179.594, -556.741, -5691, 2324, -215.513, 534.292, 215.513, -534.292, -5729, 519, -660.008, 148.165, 660.008, -148.165, -4600, -723, -493.883, -211.023, 493.883, 211.023, -1658, -531, -543.272, -224.492, 543.272, 224.492, -1008, 278, -170.614, -273.881, 170.614, 273.881, 2847, 405)
 }
 point_count = 11
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_of5fb"]
+vertices = PackedVector2Array(2249.02, 2985.8, 2866.91, 3247.89, 1467.92, 3233.1, 2082.97, 2989.21, 3625, 2071.02, 3638.92, 4013.96, 3033.02, 3391.89, 3030.98, 2056.02, 299.977, 4001.03, 1078, 3756.54, 2858.08, 2218.07, 2460.72, 2221.08, 2246.98, 2054.07, 2465.27, 2054.98, 1461.92, 2455, 1868.44, 2233.06, 3630.97, -124.867, -137.953, -78.1172, 2086.03, 2052.93, 1860.58, 2050.96, 1078, 2620.87, 1302, 2618.12, 1302, 3411.11, -128.039, 2058.95, 297.008, 2224.05, 915.047, 2455, 907.938, 3764.48)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 5, 8, 9), PackedInt32Array(10, 1, 0, 11), PackedInt32Array(11, 0, 12, 13), PackedInt32Array(3, 2, 14, 15), PackedInt32Array(16, 4, 7, 17), PackedInt32Array(17, 7, 13, 12, 18, 19), PackedInt32Array(20, 21, 22, 9), PackedInt32Array(19, 23, 17), PackedInt32Array(15, 19, 18, 3), PackedInt32Array(24, 15, 14, 25), PackedInt32Array(8, 24, 25, 26), PackedInt32Array(9, 22, 6), PackedInt32Array(8, 26, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2237, 2064, 2239, 2976, 2093, 2979, 2096, 2063, 1851, 2061, 1858, 2223, 287, 2214, 290, 4011, 3649, 4024, 3635, 2071, 3021, 2066, 3023, 3382, 1312, 3401, 1312, 2608, 1068, 2611, 1068, 3747, 918, 3754, 925, 2465, 1452, 2465, 1458, 3243, 2877, 3258, 2868, 2208, 2471, 2211, 2475, 2065), PackedVector2Array(-138, 2069, 1851, 2061, 2096, 2063, 2237, 2064, 2475, 2065, 3021, 2066, 3635, 2071, 3641, -135, -148, -88)])
 
 [node name="Outside" instance=ExtResource("1_2lm8n")]
 script = ExtResource("2_aybl5")
@@ -181,6 +187,9 @@ position = Vector2(1177, 2798)
 [node name="Bug" parent="Enemies" index="2" instance=ExtResource("19_ifjca")]
 position = Vector2(2574, 3094)
 
+[node name="Hunter" parent="Enemies" index="3" instance=ExtResource("21_55se3")]
+position = Vector2(576, 2455)
+
 [node name="Player" parent="." index="9"]
 z_index = 2
 position = Vector2(2058, 1421)
@@ -195,6 +204,9 @@ position = Vector2(2847, 405)
 rotation = 0.586754
 
 [node name="LevelBarriers" type="Node2D" parent="." index="13"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="14"]
+navigation_polygon = SubResource("NavigationPolygon_of5fb")
 
 [connection signal="player_entered_gate" from="Ground_Soil#Gate" to="." method="_on_ground_soil_gate_player_entered_gate"]
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
