@@ -188,7 +188,7 @@ position = Vector2(1177, 2798)
 position = Vector2(2574, 3094)
 
 [node name="Hunter" parent="Enemies" index="3" instance=ExtResource("21_55se3")]
-position = Vector2(576, 2455)
+position = Vector2(2786, 1654)
 
 [node name="Player" parent="." index="9"]
 z_index = 2
@@ -207,6 +207,8 @@ rotation = 0.586754
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="14"]
 navigation_polygon = SubResource("NavigationPolygon_of5fb")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [connection signal="player_entered_gate" from="Ground_Soil#Gate" to="." method="_on_ground_soil_gate_player_entered_gate"]
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]

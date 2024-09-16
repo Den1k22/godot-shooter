@@ -1,30 +1,250 @@
-[gd_scene load_steps=6 format=3 uid="uid://edu586lxg7j3"]
+[gd_scene load_steps=21 format=3 uid="uid://edu586lxg7j3"]
 
-[ext_resource type="Texture2D" uid="uid://uoii8h1sm0wu" path="res://graphics/enemies/hunter/hunter.png" id="1_d1i8t"]
-[ext_resource type="Script" path="res://scenes/enemies/hunter.gd" id="1_htrpm"]
+[ext_resource type="Script" path="res://scenes/scripts/hunter.gd" id="1_htrpm"]
+[ext_resource type="Texture2D" uid="uid://5r8u31usha7f" path="res://graphics/enemies/hunter/parts/leg_front_inner.png" id="2_qt6so"]
+[ext_resource type="Texture2D" uid="uid://u00lqlsygqog" path="res://graphics/enemies/hunter/parts/leg_front_outer.png" id="3_5f5c2"]
+[ext_resource type="Texture2D" uid="uid://rd585o2imll5" path="res://graphics/enemies/hunter/parts/torso.png" id="4_kgh12"]
+[ext_resource type="Texture2D" uid="uid://dy7xbe8nmqtei" path="res://graphics/enemies/hunter/parts/head.png" id="5_22jw5"]
+[ext_resource type="Texture2D" uid="uid://bqvmrl6xuhncj" path="res://graphics/enemies/hunter/parts/claw.png" id="6_68wp7"]
+[ext_resource type="Texture2D" uid="uid://dadnn5pql6o7r" path="res://graphics/enemies/hunter/parts/leg_back_inner.png" id="6_tul8m"]
+[ext_resource type="Texture2D" uid="uid://b1xxhpcabydy7" path="res://graphics/enemies/hunter/parts/leg_back_outer.png" id="7_ngcrv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gjfng"]
 radius = 37.0
-height = 300.0
+height = 322.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sg4o1"]
 radius = 1411.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stj01"]
-radius = 224.511
+radius = 69.5845
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jkvts"]
+resource_name = "Front Right Leg"
+target_nodepath = NodePath("../Targets/FrontRight")
+flip_bend_direction = true
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("Torso/FrontRightLeg")
+joint_two_bone_idx = 2
+joint_two_bone2d_node = NodePath("Torso/FrontRightLeg/FrontRightClaw")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_4uewb"]
+resource_name = "Front Left Leg"
+target_nodepath = NodePath("../Targets/FrontLeft")
+joint_one_bone_idx = 3
+joint_one_bone2d_node = NodePath("Torso/FrontLeftLeg")
+joint_two_bone_idx = 4
+joint_two_bone2d_node = NodePath("Torso/FrontLeftLeg/FrontLeftClaw")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_fs26o"]
+resource_name = "Rear Right Leg"
+target_nodepath = NodePath("../Targets/RearRight")
+joint_one_bone_idx = 6
+joint_one_bone2d_node = NodePath("Torso/RearRightLeg")
+joint_two_bone_idx = 7
+joint_two_bone2d_node = NodePath("Torso/RearRightLeg/RearRightClaw")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_hdw3r"]
+resource_name = "Rear Left Leg"
+target_nodepath = NodePath("../Targets/RearLeft")
+flip_bend_direction = true
+joint_one_bone_idx = 8
+joint_one_bone2d_node = NodePath("Torso/RearLeftLeg")
+joint_two_bone_idx = 9
+joint_two_bone2d_node = NodePath("Torso/RearLeftLeg/RearLeftClaw")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_h2le7"]
+enabled = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_jkvts")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_4uewb")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_fs26o")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_hdw3r")
+
+[sub_resource type="Animation" id="Animation_uvf7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Targets/FrontRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(107, -221)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Targets/FrontLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-103, -217)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Targets/RearRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(125, 66)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Targets/RearLeft:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-50, 170)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Torso/Head/RightClaw:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Torso/Head/LeftClaw:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nu5ba"]
+resource_name = "attack"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Torso/Head/RightClaw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.6, 1.7, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.959931, -0.349066, -0.349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Torso/Head/LeftClaw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.6, 1.7, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.0472, 0.261799, 0.261799, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ojlpi"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Targets/FrontRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(107, -221), Vector2(64, -236), Vector2(116, -147), Vector2(107, -221)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Targets/FrontLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-94, -141), Vector2(-134, -212), Vector2(-73, -229), Vector2(-94, -141)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Targets/RearRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(121, 121), Vector2(125, 66), Vector2(70, 159), Vector2(121, 121)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Targets/RearLeft:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-50, 170), Vector2(-137, 99), Vector2(-119, 87), Vector2(-50, 170)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3bolx"]
+_data = {
+"RESET": SubResource("Animation_uvf7q"),
+"attack": SubResource("Animation_nu5ba"),
+"walk": SubResource("Animation_ojlpi")
+}
 
 [node name="Hunter" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_htrpm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_d1i8t")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
+position = Vector2(0, -71)
 shape = SubResource("CapsuleShape2D_gjfng")
 
 [node name="NoticeArea" type="Area2D" parent="."]
@@ -35,15 +255,162 @@ shape = SubResource("CircleShape2D_sg4o1")
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -257)
 shape = SubResource("CircleShape2D_stj01")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_h2le7")
+
+[node name="Torso" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="FrontRightLeg" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(31, -53)
+rest = Transform2D(0.995643, 0.0925146, -0.0925146, 0.995643, 31, -53)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/FrontRightLeg"]
+position = Vector2(26, -34)
+texture = ExtResource("2_qt6so")
+
+[node name="FrontRightClaw" type="Bone2D" parent="Skeleton2D/Torso/FrontRightLeg"]
+position = Vector2(49, -60)
+rest = Transform2D(0.730858, -0.682444, 0.682444, 0.730858, 49, -60)
+auto_calculate_length_and_angle = false
+length = 120.0
+bone_angle = -60.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/FrontRightLeg/FrontRightClaw"]
+position = Vector2(44, -36)
+texture = ExtResource("3_5f5c2")
+
+[node name="FrontLeftLeg" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(-30, -55)
+rest = Transform2D(0.958762, -0.284022, 0.284022, 0.958762, -30, -55)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/FrontLeftLeg"]
+position = Vector2(-25, -34)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_qt6so")
+
+[node name="FrontLeftClaw" type="Bone2D" parent="Skeleton2D/Torso/FrontLeftLeg"]
+position = Vector2(-47, -60)
+rest = Transform2D(0.873358, 0.486975, -0.486975, 0.873358, -47, -60)
+auto_calculate_length_and_angle = false
+length = 120.0
+bone_angle = -120.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/FrontLeftLeg/FrontLeftClaw"]
+position = Vector2(-46, -35)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_5f5c2")
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(0, -99)
+rest = Transform2D(1, 0, 0, 1, 0, -99)
+auto_calculate_length_and_angle = false
+length = 97.697
+bone_angle = -90.0
+
+[node name="RightClaw" type="Node2D" parent="Skeleton2D/Torso/Head"]
+position = Vector2(13, -71)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/Head/RightClaw"]
+position = Vector2(22, -43)
+texture = ExtResource("6_68wp7")
+
+[node name="LeftClaw" type="Node2D" parent="Skeleton2D/Torso/Head"]
+position = Vector2(-12, -71)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/Head/LeftClaw"]
+position = Vector2(-22, -44)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_68wp7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/Head"]
+position = Vector2(1, -57)
+texture = ExtResource("5_22jw5")
+
+[node name="RearRightLeg" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(30, -9)
+rest = Transform2D(0.179605, -0.983709, 0.983709, 0.179605, 30, -9)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/RearRightLeg"]
+position = Vector2(17, 32)
+texture = ExtResource("6_tul8m")
+
+[node name="RearRightClaw" type="Bone2D" parent="Skeleton2D/Torso/RearRightLeg"]
+position = Vector2(38, 68)
+rotation = 1.63721
+rest = Transform2D(-0.0662616, 0.997763, -0.997763, -0.0662616, 38, 68)
+auto_calculate_length_and_angle = false
+length = 110.0
+bone_angle = 65.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/RearRightLeg/RearRightClaw"]
+position = Vector2(33, 46)
+texture = ExtResource("7_ngcrv")
+
+[node name="RearLeftLeg" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(-30, -7)
+rest = Transform2D(0.419578, 0.907704, -0.907704, 0.419578, -30, -7)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/RearLeftLeg"]
+position = Vector2(-17, 33)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_tul8m")
+
+[node name="RearLeftClaw" type="Bone2D" parent="Skeleton2D/Torso/RearLeftLeg"]
+position = Vector2(-37, 69)
+rotation = -1.35485
+rest = Transform2D(0.214327, -0.976749, 0.976749, 0.214327, -37, 69)
+auto_calculate_length_and_angle = false
+length = 110.0
+bone_angle = 115.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/RearLeftLeg/RearLeftClaw"]
+position = Vector2(-33, 46)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_ngcrv")
+
+[node name="Torso" type="Sprite2D" parent="Skeleton2D/Torso"]
+position = Vector2(7, 0)
+texture = ExtResource("4_kgh12")
+
+[node name="Targets" type="Node2D" parent="."]
+
+[node name="FrontRight" type="Marker2D" parent="Targets"]
+position = Vector2(107, -221)
+
+[node name="FrontLeft" type="Marker2D" parent="Targets"]
+position = Vector2(-103, -217)
+
+[node name="RearRight" type="Marker2D" parent="Targets"]
+position = Vector2(125, 66)
+
+[node name="RearLeft" type="Marker2D" parent="Targets"]
+position = Vector2(-50, 170)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3bolx")
+}
+
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]
