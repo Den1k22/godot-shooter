@@ -179,7 +179,7 @@ offset_bottom = 23.0
 text = "Something here"
 
 [node name="Scout" parent="Enemies" index="0" instance=ExtResource("16_acte4")]
-position = Vector2(7318, 259)
+position = Vector2(84, 682)
 
 [node name="Drone" parent="Enemies" index="1" instance=ExtResource("20_ql1ig")]
 position = Vector2(1177, 2798)
@@ -188,7 +188,13 @@ position = Vector2(1177, 2798)
 position = Vector2(2574, 3094)
 
 [node name="Hunter" parent="Enemies" index="3" instance=ExtResource("21_55se3")]
-position = Vector2(2786, 1654)
+position = Vector2(3278, 3824)
+
+[node name="Drone2" parent="Enemies" index="4" instance=ExtResource("20_ql1ig")]
+position = Vector2(1055, 323)
+
+[node name="Bug2" parent="Enemies" index="5" instance=ExtResource("19_ifjca")]
+position = Vector2(1096, 763)
 
 [node name="Player" parent="." index="9"]
 z_index = 2

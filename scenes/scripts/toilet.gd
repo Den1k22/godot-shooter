@@ -1,6 +1,7 @@
 extends ItemContainer
 
 func hit():
+	play_sound_on_hit()
 	if not opened:
 		$LidSprite.hide()
 		

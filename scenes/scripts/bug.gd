@@ -24,6 +24,7 @@ func _process(_delta):
 func hit():
 	health -= 10
 	$Particles/HitParticles.emitting = true
+	$AudioStreamPlayer2D.play()
 	$AnimatedSprite2D.material.set_shader_parameter("progress", 1)
 	await get_tree().create_timer(0.2).timeout
 	if health <= 0:

@@ -32,4 +32,10 @@ func _on_body_entered(_body):
 		"laser": Globals.laser_amount += 5
 		"grenade": Globals.grenade_amount += 1
 		"health": Globals.health += 10
+
+	$AudioStreamPlayer2D.play()
+	$Sprite2D.hide()
+	$CollisionShape2D.disabled = true
+	$PointLight2D.hide()
+	await $AudioStreamPlayer2D.finished
 	queue_free()

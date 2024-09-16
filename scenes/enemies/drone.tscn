@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://b32sf3y3f6tvw"]
+[gd_scene load_steps=19 format=3 uid="uid://b32sf3y3f6tvw"]
 
 [ext_resource type="Script" path="res://scenes/scripts/drone.gd" id="1_k1xdw"]
 [ext_resource type="Texture2D" uid="uid://pt6bci5dy2lt" path="res://graphics/enemies/drone.png" id="1_l35p5"]
 [ext_resource type="Shader" path="res://scenes/shaders/scout.gdshader" id="2_qxudx"]
 [ext_resource type="Texture2D" uid="uid://bv0upjdg2mcmg" path="res://graphics/explosions/grunge.png" id="3_1grvc"]
 [ext_resource type="Texture2D" uid="uid://bupx8owqjmp6g" path="res://graphics/explosions/explosion_3.png" id="5_b2e7v"]
+[ext_resource type="AudioStream" uid="uid://cj2tbtmfpp7ad" path="res://audio/solid_impact.ogg" id="6_3lhvy"]
+[ext_resource type="AudioStream" uid="uid://kur6vbj6ejly" path="res://audio/explosion.wav" id="7_d31ma"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkxoo"]
 shader = ExtResource("2_qxudx")
@@ -176,6 +178,21 @@ tracks/5/keys = {
 "method": &"stop_movement"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sounds/ExplosionSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_d31ma")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81kuq"]
 _data = {
@@ -236,6 +253,13 @@ collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_3431d")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_3lhvy")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="Sounds"]
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]

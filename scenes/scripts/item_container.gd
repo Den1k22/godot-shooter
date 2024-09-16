@@ -7,3 +7,6 @@ signal open(pos, direction)
 
 func hit():
 	open.emit(null, null)
+
+func play_sound_on_hit():
+	$AudioStreamPlayer2D.play()

@@ -33,6 +33,7 @@ func _on_laser_cooldown_timeout():
 	can_laser = true
 	
 func hit():
+	$AudioStreamPlayer2D.play()
 	health -= 10
 	if health <= 0:
 		queue_free()
