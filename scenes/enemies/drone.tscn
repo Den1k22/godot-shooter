@@ -18,7 +18,7 @@ radius = 72.0
 height = 148.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rv6w1"]
-radius = 1731.04
+radius = 1113.35
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kflps"]
 particles_animation = true
